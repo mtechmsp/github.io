@@ -1,69 +1,372 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>MTech MSP | Managed IT Services</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MTech MSP | Managed IT, Cybersecurity, Microsoft 365</title>
+
+  <meta name="description" content="MTech MSP provides managed IT services, cybersecurity, Microsoft 365 support, and helpdesk for small businesses and medical practices in NYC." />
+  <meta name="theme-color" content="#E86A56" />
+
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #ffffff;
+    :root{
+      --brand: #E86A56;     /* logo orange */
+      --ink:   #312F30;     /* logo dark */
+      --muted: #6b7280;
+      --bg:    #ffffff;
+      --card:  #ffffff;
+      --line:  #e5e7eb;
+      --soft:  #fff3f0;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+      --radius: 18px;
     }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 70px 20px;
-      text-align: center;
+
+    *{ box-sizing: border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--ink);
+      background: radial-gradient(1200px 600px at 80% -10%, var(--soft), transparent 60%),
+                  radial-gradient(900px 500px at 10% 0%, #f5f5f5, transparent 55%),
+                  var(--bg);
     }
-    h1 { font-size: 2.6rem; }
-    p { color: #cbd5e1; font-size: 1.1rem; }
-    .cta a {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 14px 28px;
-      background: #2563eb;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
+    a{ color: inherit; text-decoration: none; }
+    .wrap{ max-width: 1100px; margin: 0 auto; padding: 22px; }
+
+    /* Top bar */
+    .top{
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 14px;
+      padding: 10px 0 20px;
     }
-    ul {
-      list-style: none;
-      padding: 0;
-      margin-top: 40px;
+    .brand{
+      display:flex; align-items:center; gap: 12px;
+      min-width: 220px;
     }
-    li { margin: 10px 0; }
-    footer {
-      margin-top: 60px;
-      font-size: 0.9rem;
-      color: #94a3b8;
+    .brand img{
+      height: 42px; width: auto;
+      display:block;
+    }
+    .nav{
+      display:flex; align-items:center; gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .chip{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.7);
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+    }
+    .chip:hover{ border-color: rgba(232,106,86,.55); }
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 22px;
+      align-items: stretch;
+      margin-top: 4px;
+    }
+    .panel{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.75);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .heroMain{ padding: 28px; }
+    .kicker{
+      display:inline-flex; align-items:center; gap: 10px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--soft);
+      border: 1px solid rgba(232,106,86,.25);
+      color: var(--ink);
+      font-weight: 650;
+      font-size: 13px;
+      letter-spacing: .2px;
+    }
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(30px, 3.4vw, 46px);
+      line-height: 1.08;
+      letter-spacing: -.8px;
+    }
+    .sub{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+      max-width: 62ch;
+    }
+    .ctaRow{
+      display:flex; gap: 12px; flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-weight: 750;
+      font-size: 14px;
+    }
+    .btnPrimary{
+      background: var(--brand);
+      border-color: rgba(0,0,0,.05);
+      color: #fff;
+    }
+    .btnPrimary:hover{ filter: brightness(.97); }
+    .btn:hover{ border-color: rgba(232,106,86,.55); }
+
+    .heroSide{ padding: 22px; display:flex; flex-direction: column; gap: 12px; }
+    .stat{
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      background: rgba(255,255,255,.9);
+    }
+    .stat b{ display:block; font-size: 14px; }
+    .stat span{ color: var(--muted); font-size: 13px; line-height: 1.45; }
+
+    /* Sections */
+    .section{ margin-top: 22px; }
+    .sectionHead{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap: 14px;
+      margin: 24px 0 12px;
+    }
+    .sectionHead h2{
+      margin:0;
+      font-size: 20px;
+      letter-spacing: -.2px;
+    }
+    .sectionHead p{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .card{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.85);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.05);
+      min-height: 120px;
+    }
+    .card h3{ margin: 0 0 6px; font-size: 16px; }
+    .card p{ margin: 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+
+    .contactGrid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
+    }
+    .contactCard{ padding: 18px; }
+    .contactList{
+      display:grid; gap: 10px; margin-top: 10px;
+    }
+    .row{
+      display:flex; justify-content: space-between; gap: 10px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 12px;
+      background: rgba(255,255,255,.92);
+      align-items: center;
+    }
+    .row small{ color: var(--muted); display:block; font-size: 12px; }
+    .row b{ font-size: 14px; }
+
+    footer{
+      margin: 26px 0 10px;
+      color: var(--muted);
+      font-size: 13px;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+      .grid{ grid-template-columns: 1fr; }
+      .contactGrid{ grid-template-columns: 1fr; }
+      .nav{ justify-content:flex-start; }
     }
   </style>
 </head>
+
 <body>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <img src="logo.jpg" alt="MTech MSP logo" />
+      </div>
 
-  <div class="container">
-    <h1>MTech MSP</h1>
-    <p>Managed IT Services, Cybersecurity, and Microsoft 365 Support for Small Businesses and Medical Practices.</p>
-
-    <div class="cta">
-      <a href="mailto:info@mtechmsp.com">Request a Free Consultation</a>
+      <div class="nav">
+        <a class="chip" href="#services">Services</a>
+        <a class="chip" href="#support">Support</a>
+        <a class="chip" href="#contact">Contact</a>
+      </div>
     </div>
 
-    <ul>
-      <li>✔ Fully Managed IT & Helpdesk</li>
-      <li>✔ Cybersecurity & Endpoint Protection</li>
-      <li>✔ Microsoft 365 & Email</li>
-      <li>✔ Network & Cloud Support</li>
-      <li>✔ HIPAA-aware IT Solutions</li>
-    </ul>
+    <div class="hero">
+      <div class="panel heroMain">
+        <div class="kicker">Managed IT • Cybersecurity • Microsoft 365</div>
+        <h1>IT that just works — for busy offices.</h1>
+        <p class="sub">
+          MTech MSP provides proactive support, security-first management, and fast helpdesk for small businesses and medical practices.
+          Clear pricing, clean documentation, and someone who actually answers the phone.
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn btnPrimary" href="mailto:sales@mtechmsp.com?subject=Consultation%20Request%20-%20MTech%20MSP">Email Sales</a>
+          <a class="btn" href="tel:+17189086529">Call 718-908-6529</a>
+          <a class="btn" href="https://mtechmsp.screenconnect.com/" target="_blank" rel="noopener">Support Portal</a>
+        </div>
+      </div>
+
+      <div class="panel heroSide">
+        <div class="stat">
+          <b>Fast, friendly helpdesk</b>
+          <span>Get support by email, phone, or remote session when you need it.</span>
+        </div>
+        <div class="stat">
+          <b>Security-first mindset</b>
+          <span>Endpoint protection, patching, MFA, backups, and practical policies.</span>
+        </div>
+        <div class="stat">
+          <b>NYC-based service</b>
+          <span>Brooklyn office with onsite availability when required.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="services">
+      <div class="sectionHead">
+        <h2>Core Services</h2>
+        <p>Built for reliability, security, and real-world support.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Managed IT & Helpdesk</h3>
+          <p>Proactive monitoring, maintenance, and end-user support to keep everything running smoothly.</p>
+        </div>
+        <div class="card">
+          <h3>Cybersecurity</h3>
+          <p>MFA, endpoint protection, patching, least privilege, and practical security improvements.</p>
+        </div>
+        <div class="card">
+          <h3>Microsoft 365</h3>
+          <p>Email, Teams, SharePoint, licensing guidance, security baselines, and tenant management.</p>
+        </div>
+        <div class="card">
+          <h3>Network & Wi-Fi</h3>
+          <p>Switches, firewalls, VLAN segmentation, Wi-Fi optimization, and secure remote access.</p>
+        </div>
+        <div class="card">
+          <h3>Backup & Recovery</h3>
+          <p>Workstation/server backup strategy, tested restores, and disaster recovery planning.</p>
+        </div>
+        <div class="card">
+          <h3>Onsite Support</h3>
+          <p>When remote isn’t enough, we can be onsite for installs, troubleshooting, and upgrades.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="support">
+      <div class="sectionHead">
+        <h2>Support</h2>
+        <p>For existing clients who need help right now.</p>
+      </div>
+
+      <div class="panel contactCard">
+        <div class="ctaRow">
+          <a class="btn btnPrimary" href="https://mtechmsp.screenconnect.com/" target="_blank" rel="noopener">Open Support Portal</a>
+          <a class="btn" href="mailto:support@mtechmsp.com?subject=Support%20Request%20-%20MTech%20MSP">Email Support</a>
+          <a class="btn" href="tel:+17189086529">Call Support</a>
+        </div>
+        <p class="sub" style="margin-top:14px;">
+          Tip: In your email, include the best callback number, the computer/user affected, and any error message screenshots.
+        </p>
+      </div>
+    </div>
+
+    <div class="section" id="contact">
+      <div class="sectionHead">
+        <h2>Contact</h2>
+        <p>Sales, support, phone, and address in one place.</p>
+      </div>
+
+      <div class="contactGrid">
+        <div class="panel contactCard">
+          <h3 style="margin:0 0 6px;">MTech MSP</h3>
+          <p class="sub" style="margin:0;">1252 53rd St, Brooklyn, NY 11219</p>
+
+          <div class="contactList">
+            <div class="row">
+              <div>
+                <small>Support</small>
+                <b><a href="mailto:support@mtechmsp.com">support@mtechmsp.com</a></b>
+              </div>
+              <a class="chip" href="mailto:support@mtechmsp.com?subject=Support%20Request%20-%20MTech%20MSP">Email</a>
+            </div>
+
+            <div class="row">
+              <div>
+                <small>Sales</small>
+                <b><a href="mailto:sales@mtechmsp.com">sales@mtechmsp.com</a></b>
+              </div>
+              <a class="chip" href="mailto:sales@mtechmsp.com?subject=Consultation%20Request%20-%20MTech%20MSP">Email</a>
+            </div>
+
+            <div class="row">
+              <div>
+                <small>Phone</small>
+                <b><a href="tel:+17189086529">718-908-6529</a></b>
+              </div>
+              <a class="chip" href="tel:+17189086529">Call</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel contactCard">
+          <h3 style="margin:0 0 6px;">What to expect</h3>
+          <p class="sub" style="margin:0 0 12px;">
+            We’ll start with a quick discovery call, then review your environment and recommend the cleanest, safest path forward.
+          </p>
+          <div class="card" style="margin-top:10px;">
+            <h3 style="margin:0 0 6px;">Want a tighter medical focus?</h3>
+            <p style="margin:0;">
+              I can add a “Medical Practice IT” section (HIPAA-aware workflows, access control, backups, vendor systems, etc.).
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <footer>
-      © 2026 MTech MSP • All rights reserved
+      <span>© <span id="y"></span> MTech MSP. All rights reserved.</span>
+      <span style="color:var(--muted);">Brooklyn, NY</span>
     </footer>
   </div>
 
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
